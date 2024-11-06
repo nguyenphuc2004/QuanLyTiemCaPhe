@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="BoderPane" prefHeight="502.0" prefWidth="1118.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="50.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="13.0" layoutY="116.0" prefHeight="228.0" prefWidth="15.0">
+               <children>
+                  <ImageView id="Oders1" fx:id="Oders" fitHeight="29.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#OdersClick" opacity="0.37" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Tableware.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets top="17.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="Material" fitHeight="29.0" fitWidth="24.0" layoutX="10.0" layoutY="40.0" onMouseClicked="#MaterialClick" opacity="0.37" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Street%20Food.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets top="17.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="Bill" fitHeight="29.0" fitWidth="24.0" layoutX="10.0" layoutY="69.0" onMouseClicked="#BillClick" opacity="0.37" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Purchase%20Order_1.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets top="17.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+            <ImageView fx:id="logOut" fitHeight="29.0" fitWidth="24.0" layoutX="13.0" layoutY="512.0" onMouseClicked="#logOutClick" opacity="0.37" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
+               <image>
+                  <Image url="@../img/icons8-export-50.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane id="QuanLyDonHangAnchorPane" fx:id="goOders" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: f3f3f3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <padding>
+                  <Insets right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <AnchorPane layoutY="76.0" prefHeight="462.0" prefWidth="350.0" styleClass="shadow">
+                     <children>
+                        <ScrollPane id="scrollMenuItem" fx:id="scrollMenuItem" layoutY="-1.0" prefHeight="465.0" prefWidth="502.0">
+                           <content>
+                              <GridPane id="GridPaneMenuItem" fx:id="GridPaneMenuItem" prefHeight="0.0" prefWidth="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="110.0" layoutY="14.0" text="MenuItems " textFill="#ef0606">
+                     <font>
+                        <Font name="System Bold Italic" size="35.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="545.0" layoutY="76.0" prefHeight="267.0" prefWidth="499.0" styleClass="sidebar">
+                     <children>
+                        <TableView fx:id="TableViewPay" layoutX="4.0" layoutY="34.0" prefHeight="200.0" prefWidth="498.0">
+                          <columns>
+                            <TableColumn fx:id="NameItemColumPay" prefWidth="116.0" text="Name" />
+                              <TableColumn fx:id="priceItemColumPay" minWidth="0.79998779296875" prefWidth="114.40008544921875" text="Price" />
+                              <TableColumn fx:id="QuantityItemColumnPay" prefWidth="112.0" text="Quantity" />
+                            <TableColumn fx:id="ImgItemColumnPay" prefWidth="211.199951171875" text="Images" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="552.0" layoutY="368.0" text="TotalPrice" textFill="#f7d40a">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="TxtShowPayTotalPrice" editable="false" layoutX="669.0" layoutY="369.0" />
+                  <Button id="btnPay" fx:id="btnPay" layoutX="667.0" layoutY="427.0" mnemonicParsing="false" onAction="#handlePayButtonAction" prefHeight="46.0" prefWidth="153.0" styleClass="pane" text="PAY" textFill="#06e40a">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane id="QuanLyNguyenLieuAnchorPane" fx:id="goMaterial" layoutX="1.0" layoutY="2.0" prefHeight="555.0" prefWidth="1056.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TableView id="TableViewMaterial" fx:id="TableViewMaterial" layoutX="101.0" layoutY="106.0" prefHeight="430.0" prefWidth="746.0">
+                    <columns>
+                      <TableColumn id="CoLumnID" fx:id="CoLumnID" prefWidth="150.6667022705078" text="MaterialID" />
+                      <TableColumn id="columnQuantity" fx:id="columnQuantity" minWidth="0.0" prefWidth="0.0" text="Quantity" />
+                        <TableColumn id="columnName" fx:id="columnName" prefWidth="131.3333740234375" text="MaterialName" />
+                        <TableColumn id="columnUnit" fx:id="columnQuantity" prefWidth="148.66665649414062" text="Quantity" />
+                        <TableColumn id="columnUnit" fx:id="columnUnit" minWidth="6.6666259765625" prefWidth="160.0" text="Unit" />
+                        <TableColumn id="columnImage" fx:id="columnImage" prefWidth="148.66665649414062" text="Image" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="300.0" layoutY="53.0" text="Material" textFill="#eb0606">
+                     <font>
+                        <Font name="System Bold Italic" size="50.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <AnchorPane id="XemLichSuOrdersAnchorPane" fx:id="goBill" prefHeight="555.0" prefWidth="1056.0" visible="false" AnchorPane.bottomAnchor="6.399999999999977" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="4.7999999999999545" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="168.0" text="Calendar Orders " textFill="#e40404">
+                     <font>
+                        <Font name="System Bold Italic" size="45.0" />
+                     </font>
+                  </Label>
+                  <TableView id="CalendarTableView" fx:id="CalendarTableView" layoutX="46.0" layoutY="99.0" prefHeight="429.0" prefWidth="599.0">
+                    <columns>
+                      <TableColumn id="OrderIdColumn" fx:id="OrderIdColumn" prefWidth="119.33330535888672" text="OrderID" />
+                      <TableColumn id="UserIdColumn" fx:id="UserIdColumn" prefWidth="95.33338928222656" text="UserID" />
+                        <TableColumn id="TotalPriceColumn" fx:id="TotalPriceColumn" prefWidth="172.0" text="TotalPrice" />
+                        <TableColumn id="OrderDateColumn" fx:id="StatusColumn" prefWidth="173.99996948242188" text="Status" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
