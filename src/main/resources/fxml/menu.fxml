@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.tiemcaphe.ui.MenuController" spacing="16">
+   <VBox spacing="10" HBox.hgrow="ALWAYS">
+      <HBox spacing="8" alignment="CENTER_LEFT">
+         <TextField fx:id="txtSearch" promptText="Tìm món..." prefWidth="220"/>
+         <ComboBox fx:id="cbFilterCategory" prefWidth="190"/>
+         <Button fx:id="btnCategories" text="Quản lý danh mục" onAction="#manageCategories"/>
+         <Region HBox.hgrow="ALWAYS"/>
+         <Label fx:id="lblCount" styleClass="muted" text=""/>
+      </HBox>
+      <TableView fx:id="tblProducts" VBox.vgrow="ALWAYS">
+         <columns>
+            <TableColumn fx:id="colImage" text="" prefWidth="56" minWidth="56" maxWidth="56"/>
+            <TableColumn fx:id="colName" text="Tên món" prefWidth="230"/>
+            <TableColumn fx:id="colCategory" text="Danh mục" prefWidth="150"/>
+            <TableColumn fx:id="colPrice" text="Giá bán" prefWidth="110"/>
+            <TableColumn fx:id="colAvailable" text="Trạng thái" prefWidth="110"/>
+            <TableColumn fx:id="colUpdated" text="Cập nhật" prefWidth="140"/>
+         </columns>
+      </TableView>
+   </VBox>
+   <VBox styleClass="card" prefWidth="360" minWidth="340" maxWidth="380" spacing="8">
+      <Label fx:id="lblFormTitle" styleClass="h3" text="Thêm món mới"/>
+      <Label styleClass="field-label" text="TÊN MÓN"/>
+      <TextField fx:id="txtName" promptText="ví dụ: Cà phê sữa đá"/>
+      <Label styleClass="field-label" text="DANH MỤC"/>
+      <ComboBox fx:id="cbCategory" maxWidth="Infinity"/>
+      <Label styleClass="field-label" text="GIÁ BÁN (đ)"/>
+      <TextField fx:id="txtPrice" promptText="25.000"/>
+      <CheckBox fx:id="chkAvailable" text="Đang bán (hiện trên màn hình bán hàng)" selected="true"/>
+      <Label styleClass="field-label" text="HÌNH ẢNH"/>
+      <HBox spacing="10" alignment="CENTER_LEFT">
+         <StackPane styleClass="image-frame" minWidth="128" minHeight="128">
+            <ImageView fx:id="imgPreview" fitWidth="120" fitHeight="120" preserveRatio="true"/>
+         </StackPane>
+         <VBox spacing="6">
+            <Button fx:id="btnChooseImage" text="Chọn ảnh..." onAction="#chooseImage"/>
+            <Button fx:id="btnRemoveImage" text="Bỏ ảnh" styleClass="btn-ghost" onAction="#removeImage"/>
+         </VBox>
+      </HBox>
+      <Label fx:id="lblStatus" styleClass="success-text" text="" wrapText="true"/>
+      <Region VBox.vgrow="ALWAYS"/>
+      <Button fx:id="btnRecipe" text="Định lượng nguyên liệu..." maxWidth="Infinity" onAction="#editRecipe"/>
+      <HBox spacing="8">
+         <Button fx:id="btnNew" text="Thêm mới" onAction="#newProduct"/>
+         <Button fx:id="btnSave" text="Lưu" styleClass="btn-primary" maxWidth="Infinity" HBox.hgrow="ALWAYS" onAction="#save"/>
+         <Button fx:id="btnDelete" text="Xóa" styleClass="btn-outline-danger" onAction="#delete"/>
+      </HBox>
+   </VBox>
+</HBox>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.tiemcaphe.ui.IngredientsController" spacing="16">
+   <VBox spacing="10" HBox.hgrow="ALWAYS">
+      <HBox spacing="8" alignment="CENTER_LEFT">
+         <TextField fx:id="txtSearch" promptText="Tìm nguyên liệu..." prefWidth="200"/>
+         <CheckBox fx:id="chkLowOnly" text="Chỉ hiện sắp hết"/>
+         <Region HBox.hgrow="ALWAYS"/>
+         <Button fx:id="btnStockIn" text="Nhập kho" styleClass="btn-primary" onAction="#stockIn"/>
+         <Button fx:id="btnStockOut" text="Xuất kho" onAction="#stockOut"/>
+         <Button fx:id="btnAdjust" text="Kiểm kê" onAction="#adjust"/>
+         <Button fx:id="btnHistory" text="Lịch sử" onAction="#history"/>
+      </HBox>
+      <TableView fx:id="tblIngredients" VBox.vgrow="ALWAYS">
+         <columns>
+            <TableColumn fx:id="colImage" text="" prefWidth="56" minWidth="56" maxWidth="56"/>
+            <TableColumn fx:id="colName" text="Nguyên liệu" prefWidth="200"/>
+            <TableColumn fx:id="colQty" text="Tồn kho" prefWidth="100"/>
+            <TableColumn fx:id="colUnit" text="Đơn vị" prefWidth="80"/>
+            <TableColumn fx:id="colThreshold" text="Ngưỡng cảnh báo" prefWidth="120"/>
+            <TableColumn fx:id="colStatus" text="Trạng thái" prefWidth="100"/>
+            <TableColumn fx:id="colUpdated" text="Cập nhật" prefWidth="140"/>
+         </columns>
+      </TableView>
+      <Label fx:id="lblCount" styleClass="muted" text=""/>
+   </VBox>
+   <VBox fx:id="formPane" styleClass="card" prefWidth="340" minWidth="320" maxWidth="360" spacing="8">
+      <Label fx:id="lblFormTitle" styleClass="h3" text="Thêm nguyên liệu"/>
+      <Label styleClass="field-label" text="TÊN NGUYÊN LIỆU"/>
+      <TextField fx:id="txtName" promptText="ví dụ: Sữa đặc"/>
+      <Label styleClass="field-label" text="ĐƠN VỊ TÍNH"/>
+      <ComboBox fx:id="cbUnit" editable="true" maxWidth="Infinity" promptText="kg, lít, lon, hộp..."/>
+      <Label styleClass="field-label" text="NGƯỠNG CẢNH BÁO SẮP HẾT (0 = không cảnh báo)"/>
+      <TextField fx:id="txtThreshold" promptText="0"/>
+      <VBox fx:id="initialBox" spacing="8">
+         <Label styleClass="field-label" text="TỒN KHO BAN ĐẦU"/>
+         <TextField fx:id="txtInitial" promptText="0"/>
+      </VBox>
+      <Label styleClass="field-label" text="HÌNH ẢNH (không bắt buộc)"/>
+      <HBox spacing="10" alignment="CENTER_LEFT">
+         <StackPane styleClass="image-frame" minWidth="96" minHeight="96">
+            <ImageView fx:id="imgPreview" fitWidth="88" fitHeight="88" preserveRatio="true"/>
+         </StackPane>
+         <VBox spacing="6">
+            <Button fx:id="btnChooseImage" text="Chọn ảnh..." onAction="#chooseImage"/>
+            <Button fx:id="btnRemoveImage" text="Bỏ ảnh" styleClass="btn-ghost" onAction="#removeImage"/>
+         </VBox>
+      </HBox>
+      <Label fx:id="lblStatus" styleClass="success-text" text="" wrapText="true"/>
+      <Region VBox.vgrow="ALWAYS"/>
+      <HBox spacing="8">
+         <Button fx:id="btnNew" text="Thêm mới" onAction="#newIngredient"/>
+         <Button fx:id="btnSave" text="Lưu" styleClass="btn-primary" maxWidth="Infinity" HBox.hgrow="ALWAYS" onAction="#save"/>
+         <Button fx:id="btnDelete" text="Xóa" styleClass="btn-outline-danger" onAction="#delete"/>
+      </HBox>
+   </VBox>
+</HBox>

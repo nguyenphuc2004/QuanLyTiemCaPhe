@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.tiemcaphe.ui.OrdersController" spacing="10">
+   <HBox spacing="8" alignment="CENTER_LEFT">
+      <Label text="Từ"/>
+      <DatePicker fx:id="dpFrom" prefWidth="125"/>
+      <Label text="đến"/>
+      <DatePicker fx:id="dpTo" prefWidth="125"/>
+      <ComboBox fx:id="cbStatus" prefWidth="150"/>
+      <ComboBox fx:id="cbStaff" prefWidth="170"/>
+      <TextField fx:id="txtKeyword" promptText="Mã đơn, bàn, ghi chú..." prefWidth="170" onAction="#search"/>
+      <Button fx:id="btnSearch" text="Tìm" styleClass="btn-primary" onAction="#search"/>
+      <Button text="Hôm nay" onAction="#today"/>
+      <Button text="7 ngày" onAction="#week"/>
+      <Button text="Tháng này" onAction="#month"/>
+   </HBox>
+   <SplitPane dividerPositions="0.64" VBox.vgrow="ALWAYS">
+      <VBox spacing="6">
+         <TableView fx:id="tblOrders" VBox.vgrow="ALWAYS">
+            <columns>
+               <TableColumn fx:id="colCode" text="Mã đơn" prefWidth="150"/>
+               <TableColumn fx:id="colTime" text="Thời gian" prefWidth="140"/>
+               <TableColumn fx:id="colStaff" text="Nhân viên" prefWidth="115"/>
+               <TableColumn fx:id="colTable" text="Bàn" prefWidth="70"/>
+               <TableColumn fx:id="colTotal" text="Thành tiền" prefWidth="105"/>
+               <TableColumn fx:id="colMethod" text="Thanh toán" prefWidth="115"/>
+               <TableColumn fx:id="colStatus" text="Trạng thái" prefWidth="130"/>
+            </columns>
+         </TableView>
+         <Label fx:id="lblSummary" styleClass="muted" text=""/>
+      </VBox>
+      <VBox styleClass="card" spacing="8" minWidth="340">
+         <Label fx:id="lblDetailTitle" styleClass="h3" text="Chi tiết đơn"/>
+         <GridPane hgap="10" vgap="3">
+            <columnConstraints>
+               <ColumnConstraints minWidth="90"/>
+               <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+            <Label styleClass="muted" text="Thời gian" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label fx:id="lblTime" text="—" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label styleClass="muted" text="Nhân viên" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="lblStaff" text="—" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label styleClass="muted" text="Bàn" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Label fx:id="lblTable" text="—" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label styleClass="muted" text="Ghi chú" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <Label fx:id="lblNote" text="—" wrapText="true" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label styleClass="muted" text="Trạng thái" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <Label fx:id="lblStatus" text="—" wrapText="true" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+         </GridPane>
+         <TableView fx:id="tblLines" VBox.vgrow="ALWAYS" minHeight="140">
+            <columns>
+               <TableColumn fx:id="colLineName" text="Món" prefWidth="170"/>
+               <TableColumn fx:id="colLineQty" text="SL" prefWidth="50"/>
+               <TableColumn fx:id="colLinePrice" text="Đơn giá" prefWidth="90"/>
+               <TableColumn fx:id="colLineTotal" text="Thành tiền" prefWidth="100"/>
+            </columns>
+         </TableView>
+         <GridPane hgap="10" vgap="3">
+            <columnConstraints>
+               <ColumnConstraints hgrow="ALWAYS"/>
+               <ColumnConstraints halignment="RIGHT" minWidth="120"/>
+            </columnConstraints>
+            <Label styleClass="muted" text="Tạm tính" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label fx:id="lblSubtotal" text="0 đ" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label styleClass="muted" text="Giảm giá" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="lblDiscount" text="0 đ" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label styleClass="h3" text="Thành tiền" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Label fx:id="lblTotal" styleClass="money" text="0 đ" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label styleClass="muted" text="Thanh toán" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <Label fx:id="lblMethod" text="—" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label styleClass="muted" text="Khách đưa / thừa" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <Label fx:id="lblPaid" text="—" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+         </GridPane>
+         <HBox spacing="8">
+            <Button fx:id="btnPrint" text="In lại hóa đơn" onAction="#reprint"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnCancel" text="Hủy đơn" styleClass="btn-outline-danger" onAction="#cancelOrder"/>
+         </HBox>
+      </VBox>
+   </SplitPane>
+</VBox>

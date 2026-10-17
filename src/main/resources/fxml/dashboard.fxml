@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.tiemcaphe.ui.DashboardController" fitToWidth="true" styleClass="view-scroll">
+   <VBox spacing="16">
+      <HBox spacing="12" alignment="CENTER_LEFT">
+         <Label fx:id="lblGreeting" styleClass="h2" text="Xin chào"/>
+         <Region HBox.hgrow="ALWAYS"/>
+         <Button fx:id="btnRefresh" text="Làm mới" onAction="#refresh"/>
+      </HBox>
+      <HBox spacing="12">
+         <VBox styleClass="kpi" HBox.hgrow="ALWAYS" spacing="2">
+            <Label styleClass="kpi-caption" text="Doanh thu hôm nay"/>
+            <Label fx:id="kpiToday" styleClass="kpi-value" text="0 đ"/>
+            <Label fx:id="kpiTodayOrders" styleClass="kpi-sub" text="0 đơn"/>
+         </VBox>
+         <VBox styleClass="kpi" HBox.hgrow="ALWAYS" spacing="2">
+            <Label styleClass="kpi-caption" text="Doanh thu tháng này"/>
+            <Label fx:id="kpiMonth" styleClass="kpi-value" text="0 đ"/>
+            <Label fx:id="kpiMonthOrders" styleClass="kpi-sub" text="0 đơn"/>
+         </VBox>
+         <VBox styleClass="kpi" HBox.hgrow="ALWAYS" spacing="2">
+            <Label styleClass="kpi-caption" text="Trung bình mỗi đơn hôm nay"/>
+            <Label fx:id="kpiAvg" styleClass="kpi-value" text="0 đ"/>
+            <Label fx:id="kpiProducts" styleClass="kpi-sub" text="0 món trong thực đơn"/>
+         </VBox>
+         <VBox fx:id="kpiLowBox" styleClass="kpi" HBox.hgrow="ALWAYS" spacing="2">
+            <Label styleClass="kpi-caption" text="Nguyên liệu sắp hết"/>
+            <Label fx:id="kpiLow" styleClass="kpi-value" text="0"/>
+            <Label styleClass="kpi-sub" text="theo ngưỡng cảnh báo đã đặt"/>
+         </VBox>
+      </HBox>
+      <HBox spacing="16">
+         <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="8">
+            <Label styleClass="card-title" text="Doanh thu 7 ngày gần nhất"/>
+            <BarChart fx:id="chartWeek" prefHeight="280" minHeight="240">
+               <xAxis><CategoryAxis/></xAxis>
+               <yAxis><NumberAxis fx:id="axisWeekY"/></yAxis>
+            </BarChart>
+         </VBox>
+         <VBox styleClass="card" prefWidth="400" minWidth="340" spacing="8">
+            <Label styleClass="card-title" text="Món bán chạy tháng này"/>
+            <TableView fx:id="tblTop" prefHeight="280">
+               <columns>
+                  <TableColumn fx:id="colTopName" text="Món" prefWidth="170"/>
+                  <TableColumn fx:id="colTopQty" text="SL" prefWidth="60"/>
+                  <TableColumn fx:id="colTopRevenue" text="Doanh thu" prefWidth="120"/>
+               </columns>
+            </TableView>
+         </VBox>
+      </HBox>
+      <VBox styleClass="card" spacing="8">
+         <Label styleClass="card-title" text="Nguyên liệu bằng hoặc dưới ngưỡng cảnh báo"/>
+         <TableView fx:id="tblLow" prefHeight="210">
+            <columns>
+               <TableColumn fx:id="colLowName" text="Nguyên liệu" prefWidth="240"/>
+               <TableColumn fx:id="colLowQty" text="Tồn kho" prefWidth="110"/>
+               <TableColumn fx:id="colLowUnit" text="Đơn vị" prefWidth="90"/>
+               <TableColumn fx:id="colLowThreshold" text="Ngưỡng cảnh báo" prefWidth="130"/>
+               <TableColumn fx:id="colLowUpdated" text="Cập nhật" prefWidth="140"/>
+            </columns>
+         </TableView>
+      </VBox>
+   </VBox>
+</ScrollPane>

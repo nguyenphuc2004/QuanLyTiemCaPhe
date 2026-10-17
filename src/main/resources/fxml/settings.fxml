@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.tiemcaphe.ui.SettingsController" fitToWidth="true" styleClass="view-scroll">
+   <VBox spacing="16" maxWidth="900">
+      <VBox fx:id="shopCard" styleClass="card" spacing="8">
+         <Label styleClass="card-title" text="Thông tin quán (in trên hóa đơn)"/>
+         <GridPane hgap="12" vgap="8">
+            <columnConstraints>
+               <ColumnConstraints minWidth="140"/>
+               <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+            <Label text="Tên quán" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtShopName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Địa chỉ" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtAddress" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Điện thoại" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtPhone" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Lời cảm ơn cuối hóa đơn" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextArea fx:id="txtFooter" prefRowCount="2" wrapText="true" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+         </GridPane>
+         <HBox spacing="8">
+            <Button fx:id="btnSaveShop" text="Lưu thông tin quán" styleClass="btn-primary" onAction="#saveShop"/>
+            <Label fx:id="lblShopStatus" styleClass="success-text" text=""/>
+         </HBox>
+      </VBox>
+
+      <VBox styleClass="card" spacing="8">
+         <Label styleClass="card-title" text="Đổi mật khẩu của tôi"/>
+         <GridPane hgap="12" vgap="8">
+            <columnConstraints>
+               <ColumnConstraints minWidth="140"/>
+               <ColumnConstraints hgrow="ALWAYS" maxWidth="360"/>
+            </columnConstraints>
+            <Label text="Mật khẩu hiện tại" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <PasswordField fx:id="txtOldPassword" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Mật khẩu mới" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <PasswordField fx:id="txtNewPassword" promptText="Ít nhất 6 ký tự" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Nhập lại mật khẩu mới" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <PasswordField fx:id="txtConfirmPassword" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+         </GridPane>
+         <HBox spacing="8">
+            <Button fx:id="btnChangePassword" text="Đổi mật khẩu" styleClass="btn-primary" onAction="#changePassword"/>
+            <Label fx:id="lblPasswordStatus" styleClass="success-text" text=""/>
+         </HBox>
+      </VBox>
+
+      <VBox fx:id="dataCard" styleClass="card" spacing="8">
+         <Label styleClass="card-title" text="Dữ liệu &amp; sao lưu"/>
+         <Label fx:id="lblDbPath" styleClass="muted" text="" wrapText="true"/>
+         <Label styleClass="muted" text="Nên sao lưu mỗi ngày sau khi đóng ca và chép file sao lưu ra USB hoặc Google Drive." wrapText="true"/>
+         <HBox spacing="8">
+            <Button fx:id="btnBackup" text="Sao lưu ngay" styleClass="btn-primary" onAction="#backupNow"/>
+            <Button fx:id="btnBackupTo" text="Sao lưu vào..." onAction="#backupTo"/>
+            <Button fx:id="btnRestore" text="Khôi phục từ file sao lưu..." onAction="#restore"/>
+         </HBox>
+         <Separator/>
+         <Label styleClass="h3" text="Dữ liệu mẫu (dùng khi trình diễn)"/>
+         <Label styleClass="muted" text="Tạo đơn hàng mẫu 30 ngày gần nhất để xem báo cáo. Trước khi giao cho quán dùng thật, bấm Xóa toàn bộ đơn hàng." wrapText="true"/>
+         <HBox spacing="8">
+            <Button fx:id="btnDemo" text="Tạo đơn hàng mẫu" onAction="#generateDemo"/>
+            <Button fx:id="btnDeleteOrders" text="Xóa toàn bộ đơn hàng" styleClass="btn-outline-danger" onAction="#deleteOrders"/>
+         </HBox>
+      </VBox>
+
+      <VBox styleClass="card" spacing="4">
+         <Label styleClass="card-title" text="Về phần mềm"/>
+         <Label fx:id="lblVersion" text=""/>
+         <Label fx:id="lblHome" styleClass="muted" text="" wrapText="true"/>
+         <Label fx:id="lblLog" styleClass="muted" text="" wrapText="true"/>
+      </VBox>
+   </VBox>
+</ScrollPane>

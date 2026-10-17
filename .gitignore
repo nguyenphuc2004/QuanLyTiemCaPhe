@@ -1,0 +1,33 @@
+# Maven
+target/
+dependency-reduced-pom.xml
+
+# Dữ liệu chạy thử cục bộ (CSDL thật nằm ở ~/TiemCaPhe, không trong repo)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+.factorypath
+bin/
+build/
+build.fxbuild
+*.launch
+nbproject/
+
+# Hệ điều hành
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Thư mục làm việc tạm khi tạo icon
+packaging/*.iconset/
+packaging/tmp/
